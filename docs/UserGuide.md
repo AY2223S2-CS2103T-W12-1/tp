@@ -192,17 +192,17 @@ Examples:
 * `delete_volunteer S8238658J` deletes the volunteer with NRIC `S8238658J`.
 
 
-### Pair volunteer and elderly: `add_pair`
+### Pair volunteer and elderly: `pair`
 
 Pairs up an existing elderly and volunteer.
 
 This allows you to track which elderly members are assigned to which volunteers.
 
-Format: `add_pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`
+Format: `pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`
 
 * After pairing, the newly added pairs appear in the pair list in the window.
 * Only elderly members and volunteers existing in FriendlyLink's data can be paired.
-* Only elderly members and volunteers with intersecting available dates can be paired.
+* Elderly member and volunteers with no common available dates can be paired but a warning message is issued.
 * Elderly member and volunteers in different regions can be paired but a warning message is issued.
 * Duplicate pairs will fail to be added to FriendlyLink.
 * Alphabets in NRIC are case-insensitive.
@@ -216,23 +216,23 @@ Format: `add_pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`
 </div>
 
 Examples:
-* `add_pair enr/S2235243I vnr/t0123423a` pairs up the elderly with NRIC S2235243I with the volunteer with NRIC T0123423A.
-* `add_pair enr/s1135243A vnr/S0773423a` pairs up the elderly with NRIC S1135243A with the volunteer with NRIC S0773423A.
+* `pair enr/S2235243I vnr/t0123423a` pairs up the elderly with NRIC S2235243I with the volunteer with NRIC T0123423A.
+* `pair enr/s1135243A vnr/S0773423a` pairs up the elderly with NRIC S1135243A with the volunteer with NRIC S0773423A.
 
-### Unpair volunteer and elderly: `delete_pair`
+### Unpair volunteer and elderly: `unpair`
 
 Unpairs an elderly from its assigned volunteer.
 
 This deletes the pair while still keeping the information of the elderly member and volunteer.
 
-Format `delete_pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`
+Format `unpair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`
 
-* After deleting, the pair is removed in the list of pairs in the window.
+* After unpairing, the pair is removed in the list of pairs in the window.
 * Alphabets in NRIC are case-insensitive.
 
 Examples
-* `delete_pair enr/S2235243I vnr/t0123423a` unpairs the elderly with NRIC S2235243I with the volunteer with NRIC T0123423A.
-* `delete_pair enr/s1135243A vnr/S0773423a` unpairs the elderly with NRIC S1135243A with the volunteer with NRIC S0773423A.
+* `unpair enr/S2235243I vnr/t0123423a` unpairs the elderly with NRIC S2235243I with the volunteer with NRIC T0123423A.
+* `unpair enr/s1135243A vnr/S0773423a` unpairs the elderly with NRIC S1135243A with the volunteer with NRIC S0773423A.
 
 ### Exiting the program : `exit`
 
@@ -294,10 +294,10 @@ If your changes to the data file makes its format invalid, FriendlyLink will dis
 | Action               | Format, Examples                                                                                                                                                                                                                        |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add Elderly**      | `add_elderly n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS enr/NRIC ag/AGE r/RISK [t/TAG]… [dr/START_DATE,END_DATE]…` <br> e.g.,`add_elderly n/John Doe p/98765432 e/johnd@example.com a/John St, blk 123, #01-01 enr/S1234567C ag/68 r/HIGH` |
-| **Add Volunteer**    | `add_volunteer n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ag/AGE vnr/NRIC [t/TAG]… [dr/START_DATE,END_DATE]…` <br> e.g.,`add_volunteer n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 ag/23 vnr/S8457677H`                              |
-| **Add Pair**         | `add_pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`<br> e.g., `add_pair enr/S2235243I vnr/t0123423a`                                                                                                                                         |
+| **Add Volunteer**    | `add_volunteer n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ag/AGE vnr/NRIC [t/TAG]… [dr/START_DATE,END_DATE]…` <br> e.g.,`add_volunteer n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 ag/23 vnr/S8457677H`     |
+| **Pair Up**          | `pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`<br> e.g., `pair enr/S2235243I vnr/t0123423a`                                                                                                                                                 |
 | **Delete Elderly**   | `delete_elderly NRIC`<br> e.g., `delete_elderly S8238655C`                                                                                                                                                                              |
 | **Delete Volunteer** | `delete_volunteer NRIC`<br> e.g., `delete_volunteer S8238658J`                                                                                                                                                                          |
-| **Delete Pair**      | `delete_pair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`<br> e.g., `delete_pair vnr/t0123423a enr/S2235243I`                                                                                                                                   |
+| **UnPair**           | `unpair enr/ELDERLY_NRIC vnr/VOLUNTEER_NRIC`<br> e.g., `unpair vnr/t0123423a enr/S2235243I`                                                                                                                                             |
 | **Find by NRIC**     | `find_nric NRIC`<br> e.g., `find_nric T1234567I`                                                                                                                                                                                        |
 | **Help**             | `help`                                                                                                                                                                                                                                  |

@@ -21,7 +21,7 @@ import seedu.address.model.person.information.Nric;
  * Deletes the pair identified using NRIC of its elderly and volunteer from the FriendlyLink database.
  */
 public class DeletePairCommand extends Command {
-    public static final String COMMAND_WORD = "delete_pair";
+    public static final String COMMAND_WORD = "unpair";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the pair identified by the nric of an elderly and their volunteer.\n"
