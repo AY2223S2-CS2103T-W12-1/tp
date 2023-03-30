@@ -23,6 +23,7 @@ class RegionTest {
         // invalid region
         assertFalse(Region.isValidRegion(" ")); // spaces only
         assertFalse(Region.isValidRegion("hello")); // random letters
+        assertFalse(Region.isValidRegion(Region.Place.NOT_SPECIFIED.name())); // "not specified" enum
 
         // valid region
         assertTrue(Region.isValidRegion(FIELD_NOT_SPECIFIED));

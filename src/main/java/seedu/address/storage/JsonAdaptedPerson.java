@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static seedu.address.logic.parser.Parser.FIELD_NOT_SPECIFIED;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -73,7 +75,11 @@ public abstract class JsonAdaptedPerson {
         address = source.getAddress().value;
         nric = source.getNric().value;
         birthDate = source.getBirthDate().birthDate.toString();
-        region = String.valueOf(source.getRegion().region);
+        if (source.getRegion().region.equals(Region.Place.NOT_SPECIFIED)) {
+            region = FIELD_NOT_SPECIFIED;
+        } else {
+            region = String.valueOf(source.getRegion().region);
+        }
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));

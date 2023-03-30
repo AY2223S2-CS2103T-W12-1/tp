@@ -28,6 +28,7 @@ class RiskLevelTest {
         // invalid risk
         assertFalse(RiskLevel.isValidRisk(" ")); // spaces only
         assertFalse(RiskLevel.isValidRisk("hello")); // random letters
+        assertFalse(RiskLevel.isValidRisk(RiskLevel.Risk.NOT_SPECIFIED.name())); // "not specified" enum
 
         // valid risk
         assertTrue(RiskLevel.isValidRisk(FIELD_NOT_SPECIFIED));

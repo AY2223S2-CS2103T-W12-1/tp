@@ -1,5 +1,7 @@
 package seedu.address.storage.elderly;
 
+import static seedu.address.logic.parser.Parser.FIELD_NOT_SPECIFIED;
+
 import java.util.List;
 import java.util.Set;
 
@@ -54,7 +56,11 @@ public class JsonAdaptedElderly extends JsonAdaptedPerson implements JsonSeriali
      */
     public JsonAdaptedElderly(Elderly source) {
         super(source);
-        riskLevel = String.valueOf(source.getRiskLevel().riskStatus);
+        if (source.getRiskLevel().riskStatus.equals(RiskLevel.Risk.NOT_SPECIFIED)) {
+            riskLevel = FIELD_NOT_SPECIFIED;
+        } else {
+            riskLevel = String.valueOf(source.getRiskLevel().riskStatus);
+        }
     }
 
     public RiskLevel getModelRiskLevel(String missingFieldMessageFormat) throws IllegalValueException {

@@ -1,6 +1,7 @@
 package seedu.address.model.person.information;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.logic.parser.Parser.FIELD_NOT_SPECIFIED;
 
 /**
@@ -31,6 +32,7 @@ public class RiskLevel {
      */
     public RiskLevel(String risk) {
         requireNonNull(risk);
+        checkArgument(isValidRisk(risk), MESSAGE_CONSTRAINTS);
         if (risk.equals(FIELD_NOT_SPECIFIED)) {
             riskStatus = Risk.NOT_SPECIFIED;
         } else {
@@ -45,7 +47,7 @@ public class RiskLevel {
      * @return True if {@code test} is a valid risk level and false otherwise.
      */
     public static boolean isValidRisk(String risk) {
-        if (risk == null) {
+        if (risk == null || risk.toLowerCase().equals(Risk.NOT_SPECIFIED.name().toLowerCase())) {
             return false;
         } else if (risk.equals(FIELD_NOT_SPECIFIED)) {
             return risk.equals(FIELD_NOT_SPECIFIED);
