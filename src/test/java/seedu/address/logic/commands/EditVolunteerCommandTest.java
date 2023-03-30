@@ -258,7 +258,7 @@ public class EditVolunteerCommandTest {
         assertNotEquals(null, standardCommand);
 
         // different types -> returns false
-        assertNotEquals(standardCommand, new ClearCommand());
+        assertNotEquals(standardCommand, new AutoPairCommand());
 
         // different index -> returns false
         assertNotEquals(standardCommand, new EditVolunteerCommand(INDEX_SECOND_PERSON, DESC_AMY));

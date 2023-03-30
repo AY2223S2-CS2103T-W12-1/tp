@@ -15,7 +15,8 @@ import java.time.format.DateTimeParseException;
 public class BirthDate {
     public static final String MESSAGE_CONSTRAINTS =
             "Please ensure the specified birth date follow this format: YYYY-MM-DD.\n"
-                + "Also ensure that it is a valid calendar date.";
+                + "Also ensure that it is a valid calendar date, "
+                + "and that it is before the current date.";
     public static final String VALIDATION_REGEX =
             "^(?<year>\\d{4})-(?<month>0[0-9]|1[0-2])-(?<day>0[0-9]|1[0-9]|2[0-9]|3[0-1])$";
 
@@ -47,7 +48,18 @@ public class BirthDate {
      * @return True if {@code date} is a valid BirthDate and false otherwise.
      */
     public static boolean isValidBirthDate(String date) {
-        return date.matches(VALIDATION_REGEX);
+        if (!date.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        try {
+            LocalDate dateToCheck = LocalDate.parse(date);
+            if (!dateToCheck.isBefore(LocalDate.now())) {
+                return false;
+            }
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+        return true;
     }
 
     public LocalDate getBirthDate() {

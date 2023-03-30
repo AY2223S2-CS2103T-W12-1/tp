@@ -14,7 +14,6 @@ import seedu.address.logic.parser.AddVolunteerCommandParser;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.AutoPairCommandParser;
-import seedu.address.logic.parser.ClearCommandParser;
 import seedu.address.logic.parser.DeleteElderlyCommandParser;
 import seedu.address.logic.parser.DeletePairCommandParser;
 import seedu.address.logic.parser.DeleteVolunteerCommandParser;
@@ -73,10 +72,6 @@ public class CommandRecommendationEngine {
                 AddPairCommand.COMMAND_WORD,
                 AddPairCommand.COMMAND_PROMPTS,
                 AddPairCommandParser::validate));
-        registerCommandInfo(new CommandInfo(
-                ClearCommand.COMMAND_WORD,
-                ClearCommand.COMMAND_PROMPTS,
-                ClearCommandParser::validate));
         registerCommandInfo(new CommandInfo(
                 FindCommand.COMMAND_WORD,
                 FindCommand.COMMAND_PROMPTS,

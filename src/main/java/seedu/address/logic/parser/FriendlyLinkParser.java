@@ -10,7 +10,6 @@ import seedu.address.logic.commands.AddElderlyCommand;
 import seedu.address.logic.commands.AddPairCommand;
 import seedu.address.logic.commands.AddVolunteerCommand;
 import seedu.address.logic.commands.AutoPairCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteElderlyCommand;
 import seedu.address.logic.commands.DeletePairCommand;
@@ -81,9 +80,6 @@ public class FriendlyLinkParser {
 
         case DeletePairCommand.COMMAND_WORD:
             return new DeletePairCommandParser().parse(arguments);
-
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
 
         case ListCommand.COMMAND_WORD:
             return new ListCommandParser().parse(arguments);

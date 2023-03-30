@@ -14,7 +14,6 @@ import seedu.address.logic.parser.AddPairCommandParser;
 import seedu.address.logic.parser.AddVolunteerCommandParser;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.ClearCommandParser;
 import seedu.address.logic.parser.DeleteElderlyCommandParser;
 import seedu.address.logic.parser.DeletePairCommandParser;
 import seedu.address.logic.parser.DeleteVolunteerCommandParser;
@@ -33,14 +32,13 @@ public class CommandRecommendationEngineTest {
     @Test
     public void recommendCommand_validCommand_success() {
         try {
-            String expected = "add_volunteer n/<name> ic/<nric> bd/<birth_date> re/<region> "
-                    + "a/<address> p/<phone> e/<email> "
-                    + "mt/<medical_qualification> dr/<start_date,end_date> t/<tag>";
+            String expected = "add_volunteer n/NAME ic/NRIC bd/BIRTH_DATE re/[REGION] a/[ADDRESS] p/[PHONE]"
+                    + " e/[EMAIL] mt/[MEDICAL_QUALIFICATION] dr/[AVAILABLE_DATE_START, AVAILABLE_DATE_END] t/[TAG]";
             String actual = commandRecommendationEngine.recommendCommand("add_volunteer");
             assertEquals(expected, actual);
 
-            expected = "add_elderly n/Zong Xun ic/<nric> bd/<birth_date> re/<region> r/<risk> "
-                    + "a/<address> p/<phone> e/<email> dr/<start_date,end_date> t/<tag>";
+            expected = "add_elderly n/Zong Xun ic/NRIC bd/BIRTH_DATE re/[REGION] r/[RISK] a/[ADDRESS]"
+                    + " p/[PHONE] e/[EMAIL] dr/[AVAILABLE_DATE_START, AVAILABLE_DATE_END] t/[TAG]";
             actual = commandRecommendationEngine.recommendCommand("add_elderly n/Zong Xun");
             assertEquals(expected, actual);
 
@@ -48,8 +46,8 @@ public class CommandRecommendationEngineTest {
             actual = commandRecommendationEngine.recommendCommand("ex");
             assertEquals(expected, actual);
 
-            expected = "clear";
-            actual = commandRecommendationEngine.recommendCommand("clea");
+            expected = "auto_pair";
+            actual = commandRecommendationEngine.recommendCommand("auto_p");
             assertEquals(expected, actual);
         } catch (CommandException e) {
             fail();
@@ -83,11 +81,6 @@ public class CommandRecommendationEngineTest {
                 .COMMAND_INFO_MAP.get(AddPairCommand.COMMAND_WORD).getCmdPrompts().keySet()
                 .toArray(new Prefix[]{}));
         assertFalse(AddPairCommandParser.validate(argumentMultimap));
-
-        argumentMultimap = ArgumentTokenizer.tokenize(userArgs, CommandRecommendationEngine
-                .COMMAND_INFO_MAP.get(ClearCommand.COMMAND_WORD).getCmdPrompts().keySet()
-                .toArray(new Prefix[]{}));
-        assertFalse(ClearCommandParser.validate(argumentMultimap));
 
         argumentMultimap = ArgumentTokenizer.tokenize(userArgs, CommandRecommendationEngine
                 .COMMAND_INFO_MAP.get(ExitCommand.COMMAND_WORD).getCmdPrompts().keySet()
@@ -156,10 +149,10 @@ public class CommandRecommendationEngineTest {
             String autocomplete = commandRecommendationEngine.autocompleteCommand(userInput, recommended);
             assertEquals("add_volunteer", autocomplete);
 
-            userInput = "clea";
+            userInput = "auto_p";
             recommended = commandRecommendationEngine.recommendCommand(userInput);
             autocomplete = commandRecommendationEngine.autocompleteCommand(userInput, recommended);
-            assertEquals("clear", autocomplete);
+            assertEquals("auto_pair", autocomplete);
 
             userInput = "add_elderly";
             recommended = commandRecommendationEngine.recommendCommand(userInput);

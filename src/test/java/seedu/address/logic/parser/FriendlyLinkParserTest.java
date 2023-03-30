@@ -13,7 +13,6 @@ import seedu.address.logic.commands.AddElderlyCommand;
 import seedu.address.logic.commands.AddPairCommand;
 import seedu.address.logic.commands.AddVolunteerCommand;
 import seedu.address.logic.commands.AutoPairCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteElderlyCommand;
 import seedu.address.logic.commands.DeleteVolunteerCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -100,13 +99,6 @@ public class FriendlyLinkParserTest {
                 DeleteVolunteerCommand.COMMAND_WORD + " " + nricStr);
         assertEquals(new DeleteVolunteerCommand(new Nric(nricStr)), command);
     }
-
-    @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
-    }
-
     @Test
     public void parseCommand_autoPair() throws Exception {
         assertTrue(parser.parseCommand(AutoPairCommand.COMMAND_WORD) instanceof AutoPairCommand);

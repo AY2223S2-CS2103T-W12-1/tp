@@ -31,8 +31,8 @@ public class AddPairCommand extends Command {
     public static final HashMap<Prefix, String> COMMAND_PROMPTS = new LinkedHashMap<>();
 
     static {
-        COMMAND_PROMPTS.put(PREFIX_NRIC_ELDERLY, "<elderly_nric>");
-        COMMAND_PROMPTS.put(PREFIX_NRIC_VOLUNTEER, "<volunteer_nric>");
+        COMMAND_PROMPTS.put(PREFIX_NRIC_ELDERLY, "ELDERLY_NRIC");
+        COMMAND_PROMPTS.put(PREFIX_NRIC_VOLUNTEER, "VOLUNTEER_NRIC");
     }
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Pairs an elderly and volunteer in FriendlyLink. "

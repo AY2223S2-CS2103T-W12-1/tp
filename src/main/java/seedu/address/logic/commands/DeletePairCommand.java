@@ -27,8 +27,8 @@ public class DeletePairCommand extends Command {
     public static final HashMap<Prefix, String> COMMAND_PROMPTS = new HashMap<>();
 
     static {
-        COMMAND_PROMPTS.put(PREFIX_NRIC_ELDERLY, "<elderly_nric>");
-        COMMAND_PROMPTS.put(PREFIX_NRIC_VOLUNTEER, "<volunteer nric>");
+        COMMAND_PROMPTS.put(PREFIX_NRIC_ELDERLY, "ELDERLY_NRIC");
+        COMMAND_PROMPTS.put(PREFIX_NRIC_VOLUNTEER, "VOLUNTEER_NRIC");
     }
 
     public static final String MESSAGE_USAGE = COMMAND_WORD

@@ -114,6 +114,9 @@ public class ElderlyCard extends UiPart<Region> {
         if (elderly.getPhone().toString().isEmpty()) {
             phoneBox.getChildren().removeAll(phoneBox.getChildren());
         }
+        if (elderly.getRiskLevel().toString().isEmpty()) {
+            riskLevel.getChildren().removeAll(riskLevel.getChildren());
+        }
         if (displayedIndex == 0) {
             id.setVisible(false);
         }

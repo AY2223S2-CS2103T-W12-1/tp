@@ -34,16 +34,16 @@ public class AddElderlyCommand extends Command {
     public static final HashMap<Prefix, String> COMMAND_PROMPTS = new LinkedHashMap<>();
 
     static {
-        COMMAND_PROMPTS.put(PREFIX_NAME, "<name>");
-        COMMAND_PROMPTS.put(PREFIX_NRIC, "<nric>");
-        COMMAND_PROMPTS.put(PREFIX_BIRTH_DATE, "<birth_date>");
-        COMMAND_PROMPTS.put(PREFIX_REGION, "<region>");
-        COMMAND_PROMPTS.put(PREFIX_RISK, "<risk>");
-        COMMAND_PROMPTS.put(PREFIX_ADDRESS, "<address>");
-        COMMAND_PROMPTS.put(PREFIX_PHONE, "<phone>");
-        COMMAND_PROMPTS.put(PREFIX_EMAIL, "<email>");
-        COMMAND_PROMPTS.put(PREFIX_AVAILABILITY, "<start_date,end_date>");
-        COMMAND_PROMPTS.put(PREFIX_TAG, "<tag>");
+        COMMAND_PROMPTS.put(PREFIX_NAME, "NAME");
+        COMMAND_PROMPTS.put(PREFIX_NRIC, "NRIC");
+        COMMAND_PROMPTS.put(PREFIX_BIRTH_DATE, "BIRTH_DATE");
+        COMMAND_PROMPTS.put(PREFIX_REGION, "[REGION]");
+        COMMAND_PROMPTS.put(PREFIX_RISK, "[RISK]");
+        COMMAND_PROMPTS.put(PREFIX_ADDRESS, "[ADDRESS]");
+        COMMAND_PROMPTS.put(PREFIX_PHONE, "[PHONE]");
+        COMMAND_PROMPTS.put(PREFIX_EMAIL, "[EMAIL]");
+        COMMAND_PROMPTS.put(PREFIX_AVAILABILITY, "[AVAILABLE_DATE_START, AVAILABLE_DATE_END]");
+        COMMAND_PROMPTS.put(PREFIX_TAG, "[TAG]");
     }
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an elderly to the database.\n"

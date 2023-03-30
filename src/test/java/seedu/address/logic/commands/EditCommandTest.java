@@ -149,7 +149,7 @@ public class EditCommandTest {
         assertNotEquals(null, standardCommand);
 
         // different types -> returns false
-        assertNotEquals(standardCommand, new ClearCommand());
+        assertNotEquals(standardCommand, new AutoPairCommand());
 
         // different nric -> returns false
         assertNotEquals(standardCommand, new EditCommand(new Nric(VALID_NRIC_BOB), CommandTestUtil.DESC_AMY));
